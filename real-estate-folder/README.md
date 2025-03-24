@@ -22,7 +22,7 @@
    To use this script, you’ll need a userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://www.greasespot.net/).
 
 2. **Add the Script:**  
-   You can install the script via [GreasyFork](https://greasyfork.org/scripts/529675).
+   You can install the script via [GreasyFork](https://greasyfork.org/scripts/530759).
 
 3. **Visit a Supported Site:**  
    Navigate to either [realestate.com.au](https://www.realestate.com.au/) or [domain.com.au](https://www.domain.com.au/). The script will automatically run and add toggle functionality to the property listings.

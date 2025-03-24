@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Real Estate Folder
-// @namespace    http://chenglongma.com/
+// @namespace    https://github.com/ChenglongMa/tampermonkey-scripts
 // @version      1.0.0
 // @description  Hide the properties you don't like
 // @author       Chenglong Ma

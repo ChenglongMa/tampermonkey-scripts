@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Visit property.com.au and findbesthouse.com.au
-// @namespace    http://chenglongma.com/
+// @namespace    https://github.com/ChenglongMa/tampermonkey-scripts
 // @version      1.0.0
 // @description  Add buttons to navigate to property.com.au and findbesthouse.com.au
 // @author       Chenglong Ma

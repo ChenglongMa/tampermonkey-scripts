@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Better Property
-// @namespace    http://chenglongma.com/
+// @namespace    https://github.com/ChenglongMa/tampermonkey-scripts
 // @version      1.0.0
 // @description  Sort property sections on property pages
 // @author       Chenglong Ma
