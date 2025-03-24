@@ -15,7 +15,7 @@
     'use strict';
 
     function getPropertyAddress() {
-        const addressElement = document.querySelector('h1[class="property-info-address"]');
+        const addressElement = document.querySelector('h1.property-info-address, div[data-testid="listing-details__button-copy-wrapper"] > h1');
         if (!addressElement) return undefined;
         return addressElement.textContent;
     }
@@ -59,20 +59,24 @@
     }
 
     function addLinkButton() {
-        const rightPanel = document.querySelector('div[class="contact-agent-panel"]');
+        const rightPanel = document.querySelector('div[class="contact-agent-panel"], div[data-testid="listing-details__agent-details"]');
         if (!rightPanel) return;
 
-        const stackDiv = rightPanel.querySelector('div[class^="Stack__StackContainer"]');
+        let stackDiv = rightPanel.querySelector('div[class^="Stack__StackContainer"], div[class="css-jmaqhc"]');
+        if (!stackDiv) {
+            stackDiv = rightPanel.lastElementChild;
+        }
         if (!stackDiv) return;
 
         // Create a new button element
         const propertyComAuButton = document.createElement('button');
         const findBestHouseButton = document.createElement('button');
 
-        const saveButton = stackDiv.querySelector('button[class*="SaveButton__StyledButton"]');
-        if (saveButton) {
-            propertyComAuButton.className = saveButton.className;
-            findBestHouseButton.className = saveButton.className;
+        const lastButton = stackDiv.querySelector('button[class*="SaveButton__StyledButton"], button[data-testid="listing-details__phone-cta-button"], button');
+
+        if (lastButton) {
+            propertyComAuButton.className = lastButton.className;
+            findBestHouseButton.className = lastButton.className;
         }
         propertyComAuButton.title = 'View in property.com.au';
         propertyComAuButton.textContent = 'View in property.com.au';
