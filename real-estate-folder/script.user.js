@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Real Estate Folder
 // @namespace    http://chenglongma.com/
-// @version      2025-03-16
+// @version      1.0.0
 // @description  Hide the properties you don't like
 // @author       Chenglong Ma
 // @match        *://*.realestate.com.au/*

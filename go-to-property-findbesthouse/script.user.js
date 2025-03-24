@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Visit property.com.au and findbesthouse.com.au
 // @namespace    http://chenglongma.com/
-// @version      2025-03-26
+// @version      1.0.0
 // @description  Add buttons to navigate to property.com.au and findbesthouse.com.au
 // @author       Chenglong Ma
 // @match        *://*.realestate.com.au/*
