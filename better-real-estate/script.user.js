@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Real Estate
 // @namespace    https://github.com/ChenglongMa/tampermonkey-scripts
-// @version      1.0.2
+// @version      1.0.3
 // @description  Enhance real estate websites with additional features
 // @author       Chenglong Ma
 // @match        *://*.realestate.com.au/*
@@ -47,7 +47,28 @@
     }
 
     async function enhancePropertyProfile(propertyLink) {
-        const propertyResponse = await fetch(propertyLink);
+        const propertyResponse = await fetch(propertyLink, {
+            "headers": {
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "accept-language": "en-AU,en-US;q=0.9,en;q=0.8,zh;q=0.7,zh-TW;q=0.6,zh-CN;q=0.5",
+                "priority": "u=0, i",
+                "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Microsoft Edge\";v=\"134\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "\"Windows\"",
+                "sec-fetch-dest": "document",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-user": "?1",
+                "upgrade-insecure-requests": "1"
+            },
+            "referrer": "https://www.property.com.au/dashboard/",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": null,
+            "method": "GET",
+            "mode": "no-cors",
+            "credentials": "include"
+        });
+
         const propertyHtml = await propertyResponse.text();
         const parser = new DOMParser();
         const propertyDoc = parser.parseFromString(propertyHtml, 'text/html');
@@ -77,7 +98,7 @@
         // 3. Extract Floor area size
         const floorAreaElement = propertyDoc.querySelector('div[title="Floor area"]');
         const propertyInfoElement = document.querySelector('ul[class*="property-info__primary-features"]');
-        if(propertyInfoElement) {
+        if (propertyInfoElement) {
             const infoContainer = propertyInfoElement.firstElementChild;
             console.log("infoContainer", infoContainer);
             console.log("floorAreaElement", floorAreaElement);
@@ -92,7 +113,10 @@
 
     function getFindBestHouseLink(address) {
         // Encode the address to be URL-friendly
-        const encodedAddress = encodeURIComponent(address.replace(/,/g, '')).replace(/%20/g, '-').toLowerCase();
+        const encodedAddress = address
+            .replace(/[^a-zA-Z0-9]+/g, '-') // Replace non-alphanumeric characters with '-'
+            .replace(/^-+|-+$/g, '') // Remove leading and trailing '-'
+            .toLowerCase();
         // Construct the URL
         return `https://www.findbesthouse.com/en/property/${encodedAddress}`;
     }
