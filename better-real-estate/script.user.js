@@ -183,6 +183,7 @@
 
     // Entry point
     const propertyAddress = getPropertyAddress();
+    if (!propertyAddress) return;
     const propertyLink = await getPropertyLink(propertyAddress);
     const findBestHouseLink = getFindBestHouseLink(propertyAddress);
     const mapLink = getGoogleMapLink(propertyAddress);
