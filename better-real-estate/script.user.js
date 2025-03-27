@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better Real Estate
 // @namespace    https://github.com/ChenglongMa/tampermonkey-scripts
-// @version      1.0.3
+// @version      1.0.4
 // @description  Enhance real estate websites with additional features
 // @author       Chenglong Ma
 // @match        *://*.realestate.com.au/*
